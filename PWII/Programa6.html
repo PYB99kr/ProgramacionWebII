@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa de Descuento</title>
+</head>
+<body>
+
+<h1>Programa de Descuento</h1>
+
+<label for="numProductos">Número de Productos:</label>
+<input type="number" id="numProductos">
+<button onclick="ingresarCostos()">Ingresar Costos</button>
+
+<div id="costosContainer" style="display: none;">
+    <h2>Costos de Productos:</h2>
+    <ul id="listaCostos"></ul>
+    <p>Sumatoria de los Costos: $<span id="sumatoriaCostos"></span></p>
+    <p>Costo Total sin Descuento Aplicado sin IVA: $<span id="totalSinDescuento"></span></p>
+    <p>Costo Total con Descuento Aplicado sin IVA: $<span id="totalConDescuento"></span> (Descuento del <span id="porcentajeDescuento"></span>%)</p>
+    <p>Costo Total con Descuento Aplicado e IVA: $<span id="totalConIVA"></span></p>
+</div>
+
+<script>
+    function ingresarCostos() {
+        var numProductos = parseInt(document.getElementById("numProductos").value);
+        var costos = [];
+        var sumatoria = 0;
+
+        for (var i = 1; i <= numProductos; i++) {
+            var costo = parseFloat(prompt("Ingrese el costo del producto #" + i));
+            costos.push(costo);
+            sumatoria += costo;
+        }
+
+        document.getElementById("listaCostos").innerHTML = "";
+        for (var j = 0; j < costos.length; j++) {
+            document.getElementById("listaCostos").innerHTML += "<li>$" + costos[j] + "</li>";
+        }
+
+        document.getElementById("sumatoriaCostos").innerText = sumatoria.toFixed(2);
+
+        var descuento = calcularDescuento(sumatoria);
+        var totalSinDescuento = sumatoria;
+        var totalConDescuento = sumatoria - descuento;
+        var totalConIVA = totalConDescuento * 1.05; // 5% de IVA
+
+        document.getElementById("totalSinDescuento").innerText = totalSinDescuento.toFixed(2);
+        document.getElementById("totalConDescuento").innerText = totalConDescuento.toFixed(2);
+        document.getElementById("porcentajeDescuento").innerText = calcularPorcentajeDescuento(descuento).toFixed(2);
+        document.getElementById("totalConIVA").innerText = totalConIVA.toFixed(2);
+
+        document.getElementById("costosContainer").style.display = "block";
+    }
+
+    function calcularDescuento(total) {
+        if (total < 2000) {
+            return 0;
+        } else if (total >= 2000 && total < 4000) {
+            return total * 0.25;
+        } else if (total >= 4000 && total < 6000) {
+            return total * 0.40;
+        } else {
+            return total * 0.50;
+        }
+    }
+
+    function calcularPorcentajeDescuento(descuento) {
+        var totalSinDescuento = parseFloat(document.getElementById("sumatoriaCostos").innerText);
+        return (descuento / totalSinDescuento) * 100;
+    }
+</script>
+
+</body>
+</html>

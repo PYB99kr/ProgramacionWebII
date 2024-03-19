@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Promedio</title>
+</head>
+<body>
+<h2>Calculadora de Promedio</h2>
+<div id="form">
+    <label for="nombre">Nombre del Alumno:</label>
+    <input type="text" id="nombre" required><br><br>
+
+    <label for="numCalificaciones">Número de Calificaciones:</label>
+    <input type="number" id="numCalificaciones" min="1" required><br><br>
+
+    <div id="calificaciones"></div>
+
+    <button type="button" onclick="calcularPromedio()">Calcular Promedio</button>
+</div>
+
+<div id="resultado"></div>
+
+<script>
+function calcularPromedio() {
+    var nombre = document.getElementById("nombre").value;
+    var numCalificaciones = parseInt(document.getElementById("numCalificaciones").value);
+    var calificaciones = [];
+
+    for (var i = 1; i <= numCalificaciones; i++) {
+        var calificacion = parseFloat(prompt("Ingrese la calificación " + i));
+        calificaciones.push(calificacion);
+    }
+
+    var sumaCalificaciones = calificaciones.reduce((a, b) => a + b, 0);
+    var promedio = sumaCalificaciones / numCalificaciones;
+    var mensaje = promedio >= 6 ? "Alumno aprobado" : "Alumno No aprobado";
+
+    var resultadoHTML = "Nombre del Alumno: " + nombre + "<br>";
+    resultadoHTML += "Calificaciones individuales: " + calificaciones.join(", ") + "<br>";
+    resultadoHTML += "Promedio: " + promedio.toFixed(2) + "<br>";
+    resultadoHTML += mensaje;
+
+    document.getElementById("resultado").innerHTML = resultadoHTML;
+
+    setTimeout(function() {
+        reiniciarPrograma();
+    }, 100);
+}
+
+function reiniciarPrograma() {
+    var reiniciar = confirm("¿Desea realizar otra operación?");
+    if (reiniciar) {
+        document.getElementById("resultado").innerHTML = "";
+        document.getElementById("nombre").value = "";
+        document.getElementById("numCalificaciones").value = "";
+        document.getElementById("calificaciones").innerHTML = "";
+    }
+}
+</script>
+
+</body>
+</html>

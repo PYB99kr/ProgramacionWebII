@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Figuras Geométricas</title>
+</head>
+<body>
+<h2>Calculadora de Figuras Geométricas</h2>
+<form>
+    <label for="figura">Seleccione la Figura:</label>
+    <select id="figura">
+        <option value="circulo">Círculo</option>
+        <option value="triangulo">Triángulo</option>
+        <option value="cuadrado">Cuadrado</option>
+    </select><br><br>
+
+    <label for="operacion">Seleccione la Operación:</label>
+    <select id="operacion">
+        <option value="perimetro">Perímetro</option>
+        <option value="area">Área</option>
+    </select><br><br>
+
+    <label for="dato1" id="dato1_label">Dato 1:</label>
+    <input type="number" id="dato1" required><br><br>
+
+    <label for="dato2" id="dato2_label" style="display: none;">Dato 2:</label>
+    <input type="number" id="dato2" style="display: none;"><br><br>
+
+    <button type="button" onclick="calcular()">Calcular</button>
+</form>
+
+<div id="resultado"></div>
+
+<script>
+function calcular() {
+    var figura = document.getElementById("figura").value;
+    var operacion = document.getElementById("operacion").value;
+    var dato1 = parseFloat(document.getElementById("dato1").value);
+    var dato2 = parseFloat(document.getElementById("dato2").value);
+
+    var resultado = 0;
+    var figuraNombre = "";
+
+    switch (figura) {
+        case "circulo":
+            figuraNombre = "Círculo";
+            if (operacion === "perimetro") {
+                resultado = 2 * Math.PI * dato1;
+            } else if (operacion === "area") {
+                resultado = Math.PI * dato1 * dato1;
+            }
+            break;
+        case "triangulo":
+            figuraNombre = "Triángulo";
+            if (operacion === "perimetro") {
+                resultado = 3 * dato1;
+            } else if (operacion === "area") {
+                resultado = (dato1 * dato2) / 2;
+            }
+            break;
+        case "cuadrado":
+            figuraNombre = "Cuadrado";
+            if (operacion === "perimetro") {
+                resultado = 4 * dato1;
+            } else if (operacion === "area") {
+                resultado = dato1 * dato1;
+            }
+            break;
+    }
+
+    document.getElementById("resultado").innerHTML = "Figura: " + figuraNombre + "<br>";
+    document.getElementById("resultado").innerHTML += "Operación: " + operacion.charAt(0).toUpperCase() + operacion.slice(1) + "<br>";
+    document.getElementById("resultado").innerHTML += "Resultado: " + resultado.toFixed(2);
+}
+
+document.getElementById("figura").addEventListener("change", function() {
+    var figura = this.value;
+    var dato1_label = document.getElementById("dato1_label");
+    var dato2_label = document.getElementById("dato2_label");
+    var dato1 = document.getElementById("dato1");
+    var dato2 = document.getElementById("dato2");
+
+    if (figura === "circulo") {
+        dato1_label.textContent = "Diámetro:";
+        dato2_label.style.display = "none";
+        dato2.style.display = "none";
+    } else if (figura === "triangulo") {
+        dato1_label.textContent = "Base:";
+        dato2_label.textContent = "Altura:";
+        dato2_label.style.display = "block";
+        dato2.style.display = "block";
+    } else if (figura === "cuadrado") {
+        dato1_label.textContent = "Lado:";
+        dato2_label.style.display = "none";
+        dato2.style.display = "none";
+    }
+});
+</script>
+
+</body>
+</html>

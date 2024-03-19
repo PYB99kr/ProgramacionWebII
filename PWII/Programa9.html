@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programa 009: Imprimir figura con estructura de ciclos</title>
+<style>
+  .figure {
+    font-family: monospace;
+    font-size: 20px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Programa 009: Imprimir figura con estructura de ciclos</h1>
+
+<label for="cycles">Ingrese el número de ciclos:</label>
+<input type="number" id="cycles" min="1" value="1">
+<button onclick="printFigure()">Imprimir Figura</button>
+
+<div class="figure" id="figure"></div>
+
+<script>
+function printFigure() {
+  const cycles = parseInt(document.getElementById('cycles').value);
+  let figure = '';
+
+  for (let i = 1; i <= cycles; i++) {
+
+    for (let j = 1; j <= i; j++) {
+      for (let k = 0; k < j; k++) {
+        figure += '# ';
+      }
+      figure += '<br>';
+    }
+    figure += '<br>';
+  }
+
+  document.getElementById('figure').innerHTML = figure;
+}
+</script>
+
+</body>
+</html>

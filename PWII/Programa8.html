@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Figura Triangular con Estructura Específica</title>
+</head>
+<body>
+<h2>Figura Triangular con Estructura Específica</h2>
+<div id="triangulo"></div>
+
+<script>
+
+var tamano = 4; 
+var resultado = '';
+
+
+for (var i = 1; i <= tamano; i++) {
+    for (var j = 1; j <= i; j++) {
+        resultado += '#'; 
+    }
+    resultado += '<br>'; 
+}
+
+for (var i = tamano - 1; i >= 1; i--) {
+    for (var j = 1; j <= i; j++) {
+        resultado += '#'; 
+    }
+    resultado += '<br>'; 
+}
+
+document.getElementById('triangulo').innerHTML = resultado;
+</script>
+
+</body>
+</html>
