@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Figuras</title>
+</head>
+<body>
+    <h1>Calculadora de Figuras</h1>
+    <label for="figuras">Selecciona una opción:</label>
+    <select id="figuras" onchange="redirect()">
+        <option value="0">Selecciona una categoría</option>
+        <optgroup label="Figuras Planas">
+            <option value="triangulo">Triángulo</option>
+            <option value="cuadrado">Cuadrado</option>
+            <option value="circulo">Círculo</option>
+            <!-- Agrega más opciones de figuras planas aquí -->
+        </optgroup>
+        <optgroup label="Figuras Volumétricas">
+            <option value="esfera">Esfera</option>
+            <option value="cubo">Cubo</option>
+            <option value="piramide">Pirámide Triangular</option>
+            <!-- Agrega más opciones de figuras volumétricas aquí -->
+        </optgroup>
+    </select>
+
+    <script>
+        function redirect() {
+            var figura = document.getElementById("figuras").value;
+            if (figura !== "0") {
+                window.location.href = "Ejercicio5_2.html#" + figura;
+            }
+        }
+    </script>
+</body>
+</html>
+

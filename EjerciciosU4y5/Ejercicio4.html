@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolución del Universo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        #canvas {
+            width: 800px; /* Doble del tamaño original */
+            height: 600px; /* Doble del tamaño original */
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+        #buttonContainer {
+            display: flex; /* Alinear los botones horizontalmente */
+        }
+        .button {
+            margin: 10px;
+            cursor: pointer;
+        }
+        .button img {
+            width: 80px;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Evolución del Universo</h1>
+    <div id="canvas">
+        <img id="mainImage" src="/EjerciciosU4y5/img/bigbang.jpg" alt="Big Bang" style="width: 100%; height: 100%;">
+    </div>
+    <div id="buttonContainer">
+        <div class="button" onmouseover="changeImage('/EjerciciosU4y5/img/bigbang.jpg')">
+            <img src="/EjerciciosU4y5/img/bigbang.jpg" alt="Big Bang">
+        </div>
+        <div class="button" onmouseover="changeImage('/EjerciciosU4y5/img/formacion.jpg')">
+            <img src="/EjerciciosU4y5/img/formacion.jpg" alt="Formación de Estrellas">
+        </div>
+        <div class="button" onmouseover="changeImage('/EjerciciosU4y5/img/galaxia.jpg')">
+            <img src="/EjerciciosU4y5/img/galaxia.jpg" alt="Galaxias">
+        </div>
+        <div class="button" onmouseover="changeImage('/EjerciciosU4y5/img/sistemasolar.jpg')">
+            <img src="/EjerciciosU4y5/img/sistemasolar.jpg" alt="Sistema Solar">
+        </div>
+        <div class="button" onmouseover="changeImage('/EjerciciosU4y5/img/tierrayluna.jpeg')">
+            <img src="/EjerciciosU4y5/img/tierrayluna.jpeg" alt="Tierra y Luna">
+        </div>
+    </div>
+
+    <script>
+        function changeImage(imageSrc) {
+            document.getElementById('mainImage').src = imageSrc;
+        }
+    </script>
+</body>
+</html>

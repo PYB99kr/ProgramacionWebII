@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promedio de Calificaciones</title>
+<style>
+  table {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 20px auto;
+  }
+  th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 5px;
+  }
+  .result {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+  }
+  input[type="button"] {
+    padding: 8px 15px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+
+<table>
+  <thead>
+    <tr>
+      <th>Alumno</th>
+      <th>Calificación 1</th>
+      <th>Calificación 2</th>
+      <th>Calificación 3</th>
+      <th>Promedio</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><input type="text" id="alumno1"></td>
+      <td><input type="text" id="calif1_1"></td>
+      <td><input type="text" id="calif1_2"></td>
+      <td><input type="text" id="calif1_3"></td>
+      <td><span id="promedio1" class="result"></span></td>
+      <td><input type="button" value="Calcular" onclick="calcularPromedio(1)"></td>
+    </tr>
+    <tr>
+      <td><input type="text" id="alumno2"></td>
+      <td><input type="text" id="calif2_1"></td>
+      <td><input type="text" id="calif2_2"></td>
+      <td><input type="text" id="calif2_3"></td>
+      <td><span id="promedio2" class="result"></span></td>
+      <td><input type="button" value="Calcular" onclick="calcularPromedio(2)"></td>
+    </tr>
+    <tr>
+      <td><input type="text" id="alumno3"></td>
+      <td><input type="text" id="calif3_1"></td>
+      <td><input type="text" id="calif3_2"></td>
+      <td><input type="text" id="calif3_3"></td>
+      <td><span id="promedio3" class="result"></span></td>
+      <td><input type="button" value="Calcular" onclick="calcularPromedio(3)"></td>
+    </tr>
+    <tr>
+      <td><input type="text" id="alumno4"></td>
+      <td><input type="text" id="calif4_1"></td>
+      <td><input type="text" id="calif4_2"></td>
+      <td><input type="text" id="calif4_3"></td>
+      <td><span id="promedio4" class="result"></span></td>
+      <td><input type="button" value="Calcular" onclick="calcularPromedio(4)"></td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+  function calcularPromedio(numFila) {
+    var calif1 = parseFloat(document.getElementById('calif'+numFila+'_1').value);
+    var calif2 = parseFloat(document.getElementById('calif'+numFila+'_2').value);
+    var calif3 = parseFloat(document.getElementById('calif'+numFila+'_3').value);
+    
+    var promedio = (calif1 + calif2 + calif3) / 3;
+    
+    document.getElementById('promedio'+numFila).innerText = promedio.toFixed(2);
+  }
+</script>
+
+</body>
+</html>

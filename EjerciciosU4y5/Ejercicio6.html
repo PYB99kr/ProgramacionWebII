@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imagine Dragons</title>
+<style>
+  .container {
+    text-align: center;
+  }
+  img {
+    width: 300px;
+    margin: 20px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Imagine Dragons</h1>
+  <p>Presiona y suelta sobre las imágenes para modificar la principal.</p>
+  <div id="main-image">
+    <img id="main" src="/EjerciciosU4y5/img/imaginedragons.jpg" alt="Imagine Dragons" style="width: 800px;">
+  </div>
+  <div id="options">
+    <img src="/EjerciciosU4y5/img/dan.jfif" alt="Dan Reynolds" onmousedown="changeImage(this.src)" onmouseup="resetImage()">
+    <img src="/EjerciciosU4y5/img/wayne.jpg" alt="Wayne Sermon" onmousedown="changeImage(this.src)" onmouseup="resetImage()">
+    <img src="/EjerciciosU4y5/img/ben.jpg" alt="Ben McKee" onmousedown="changeImage(this.src)" onmouseup="resetImage()">
+    <img src="/EjerciciosU4y5/img/daniel.jpg" alt="Daniel Platzman" onmousedown="changeImage(this.src)" onmouseup="resetImage()">
+  </div>
+</div>
+
+<script>
+  let originalImage = document.getElementById('main').src;
+
+  function changeImage(newSrc) {
+    document.getElementById('main').src = newSrc;
+  }
+
+  function resetImage() {
+    document.getElementById('main').src = originalImage;
+  }
+</script>
+
+</body>
+</html>

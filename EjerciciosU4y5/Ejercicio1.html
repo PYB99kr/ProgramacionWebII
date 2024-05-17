@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ejercicio 1 - Encontrar Elementos</title>
+</head>
+<body>
+<!-- Títulos -->
+<h1>Código HTML para Ejercicio 001</h1>
+<h2>Instrucciones:</h2>
+<p>Generar el código javaScript para localizar los elementos que se solicitan a partir del
+presente código HTML; puedes agregar atributos adicionales al código HTML, en caso de ser necesario.
+</p>
+<br><hr><br> <!-- Línea -->
+<h3>Artículo 1</h3>
+<p id="text1">
+    Lorem ipsum dolor sit amet consectetur <a href="">adipiscing</a> elit netus tellus pulvinar,
+    nascetur libero luctus porttitor condimentum ornare nam auctor diam, proin sed himenaeos montes
+    semper curae senectus dignissim dictumst. Non habitant ultrices mollis ridiculus interdum taciti ligula
+    at fusce, etiam augue quisque integer pellentesque lacus placerat facilisis sodales, dis faucibus nam
+    odio pretium nulla praesent venenatis. <a href="">Ligula</a> quis eget mauris fringilla posuere
+    eleifend egestas fusce vehicula, nullam sem dictum <br> Lorem ipsum dolor sit amet consectetur
+    adipiscing elit netus tellus pulvinar, nascetur libero luctus porttitor condimentum ornare nam auctor
+    diam, proin sed himenaeos montes semper curae senectus dignissim dictumst. Non habitant ultrices
+    mollis ridiculus interdum <a href="">taciti</a> ligula at fusce, etiam augue quisque integer
+    pellentesque lacus placerat facilisis sodales, disLorem ipsum dolor sit amet consectetur adipiscing elit
+    netus tellus pulvinar, nascetur libero luctus porttitor condimentum ornare nam auctor diam, proin sed
+    himenaeos montes semper curae senectus dignissim dictumst. Non <a href="">habitant</a> ultrices
+    mollis ridiculus interdum taciti ligula at fusce, etiam augue quisque integer pellentesque lacus placerat
+    facilisis sodales, dis
+    </p>
+    <!-- Listas -->
+    <p>Lista Elementos</p>
+    <ul id="elemen">
+    <li>Elemento 1</li>
+    <li>Elemento 2</li>
+    <li><a href="#">Elemento 3</a></li>
+    <li>Elemento 4</li>
+    <li>Elemento 5</li>
+    </ul>
+    <br><hr><br> <!-- Línea -->
+    <h3>Artículo 2</h3>
+    <p id="text2">
+    orem ipsum dolor sit amet consectetur adipiscing elit netus tellus pulvinar, nascetur libero
+    luctus porttitor condimentum ornare nam auctor diam, proin sed himenaeos montes semper curae
+    senectus dignissim dictumst. Non habitant ultrices mollis ridiculus interdum taciti ligula at fusce, etiam
+    augue quisque integer pellentesque lacus placerat facilisis sodales, dis faucibus nam odio pretium nulla
+    praesent venenatis. Ligula quis eget mauris fringilla posuere eleifend egestas fusce vehicula, nullam
+    sem dictum
+    </p>
+    <!-- listas -->
+    <p>Menú</p>
+    <nav id="menu">
+    <ul>
+    <li><a href ="#">Seccion1</a></li>
+    <li>Seccion2</li>
+    <li><a href ="#">Seccion3</a></li>
+    <li>Seccion4</li>
+    </ul>
+</nav>
+<!-- Input-->
+<input type="text" name="nombre">
+<button>Enviar</button>
+<figure class="imgAr2">
+
+<img src="https://placeimg.com/100/100/arch" alt="arch">
+<figcaption>Arquitectura</figcaption>
+
+</figure>
+<figure class="imgAr2">
+
+<img src="https://placeimg.com/100/100/animals" alt="ani">
+<figcaption>Animales</figcaption>
+
+</figure>
+<br><hr><br> <!-- Línea -->
+<h3>Artículo 3</h3>
+<p id="text3">
+Lorem ipsum dolor sit amet consectetur adipiscing elit netus tellus pulvinar, nascetur libero
+luctus porttitor condimentum ornare nam auctor diam, proin sed himenaeos montes semper curae
+senectus dignissim dictumst.<br> Non habitant ultrices mollis ridiculus interdum taciti ligula at fusce,
+etiam augue quisque integer pellentesque lacus placerat facilisis sodales, dis faucibus nam odio
+pretium nulla praesent venenatis. Ligula quis eget mauris fringilla posuere eleifend egestas fusce
+vehicula, nullam sem dictum <br>Lorem ipsum dolor sit amet consectetur adipiscing elit netus tellus
+pulvinar, nascetur libero luctus porttitor condimentum ornare nam auctor diam, proin sed himenaeos
+montes semper curae senectus dignissim dictumst. Non habitant ultrices mollis ridiculus interdum taciti
+ligula at fusce, etiam augue quisque integer pellentesque lacus placerat facilisis sodales, dis faucibus
+nam odio pretium nulla praesent venenatis. Ligula quis eget mauris fringilla posuere eleifend egestas
+fusce vehicula, nullam sem dictum<br>Lorem ipsum dolor sit amet consectetur adipiscing elit netus
+tellus pulvinar, nascetur libero luctus porttitor condimentum ornare nam auctor diam, proin sed
+himenaeos montes semper curae senectus dignissim dictumst. Non habitant ultrices mollis ridiculus
+interdum taciti ligula at fusce, etiam augue quisque integer pellentesque lacus placerat facilisis
+sodales.
+</p>
+<figure id="imgAr3">
+<img src="https://placeimg.com/200/100/nature" alt="nat">
+<img src="https://placeimg.com/100/100/people" alt="peo">
+<img src="https://placeimg.com/200/100/arch" alt="arch">
+<img src="https://placeimg.com/100/100/animals" alt="ani">
+<img src="https://placeimg.com/200/100/tech" alt="tech">
+</figure>
+
+<script>
+// a. Mostrar el Número de Artículos que existen en el Documento.
+const articles = document.querySelectorAll('h3');
+console.log('Número de Artículos:', articles.length);
+
+// b. Identificar líneas divisorias dentro del Documento y número de líneas.
+const divisoryLines = document.querySelectorAll('hr');
+console.log('Número de líneas divisorias:', divisoryLines.length);
+
+// c. Identificar los elementos de lista dentro del Documento y número de elementos en total.
+const allListItems = document.querySelectorAll('li');
+console.log('Número total de elementos de lista:', allListItems.length);
+
+// d. Identificar elementos de la “Lista Elementos”, número de elementos y código del enlace dentro de dicha lista.
+const listaElementos = document.querySelectorAll('#elemen li');
+const listaElementosLinks = document.querySelectorAll('#elemen a');
+console.log('Número de elementos en "Lista Elementos":', listaElementos.length);
+console.log('Código del enlace en "Lista Elementos":', listaElementosLinks[0].outerHTML);
+
+// e. Identificar elementos de la lista “Menú”, identificar enlaces y número de enlaces en dicha lista.
+const menuItems = document.querySelectorAll('#menu li');
+const menuLinks = document.querySelectorAll('#menu a');
+console.log('Número de elementos en "Menú":', menuItems.length);
+console.log('Número de enlaces en "Menú":', menuLinks.length);
+menuLinks.forEach(link => console.log('Código del enlace en "Menú":', link.outerHTML));
+
+// f. Identificar imágenes dentro del Documento y número de imágenes en total.
+const allImages = document.querySelectorAll('img');
+console.log('Número total de imágenes:', allImages.length);
+
+// g. Identificar imágenes del bloque referente al “Artículo 2”, identificar primera imagen y número total de imágenes dentro de este bloque.
+const article2Images = document.querySelectorAll('.imgAr2 img');
+console.log('Número total de imágenes en "Artículo 2":', article2Images.length);
+console.log('Primera imagen en "Artículo 2":', article2Images[0].outerHTML);
+
+// h. Identificar imágenes del bloque referente al “Artículo 3”, número de imágenes y código referente a la segunda y cuarta imagen del presente bloque.
+const article3Images = document.querySelectorAll('#imgAr3 img');
+console.log('Número total de imágenes en "Artículo 3":', article3Images.length);
+console.log('Segunda imagen en "Artículo 3":', article3Images[1].outerHTML);
+console.log('Cuarta imagen en "Artículo 3":', article3Images[3].outerHTML);
+
+// i. Identificar enlaces del Documento y número de enlaces en total.
+const allLinks = document.querySelectorAll('a');
+console.log('Número total de enlaces en el Documento:', allLinks.length);
+
+// j. Identificar enlaces distribuidos dentro del párrafo referente al “Artículo 1” y número de enlaces.
+const article1Links = document.querySelectorAll('#text1 a');
+console.log('Número de enlaces en "Artículo 1":', article1Links.length);
+article1Links.forEach(link => console.log('Código del enlace en "Artículo 1":', link.outerHTML));
+</script>
+</body>
+</html>

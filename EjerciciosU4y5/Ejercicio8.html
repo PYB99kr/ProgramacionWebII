@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pago Semanal con Comisión</title>
+<style>
+  table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 20px auto;
+  }
+  th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 5px;
+  }
+  .result {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+  }
+  input[type="button"] {
+    padding: 8px 15px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+
+<table>
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Nombre del Vendedor</th>
+      <th>Pago Base</th>
+      <th>Venta 1</th>
+      <th>Venta 2</th>
+      <th>Venta 3</th>
+      <th>Comisión Ventas</th>
+      <th>Pago Total</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><input type="text" id="nombre1"></td>
+      <td><input type="text" id="pagoBase1"></td>
+      <td><input type="text" id="venta1_1"></td>
+      <td><input type="text" id="venta1_2"></td>
+      <td><input type="text" id="venta1_3"></td>
+      <td><span id="comision1" class="result"></span></td>
+      <td><span id="pagoTotal1" class="result"></span></td>
+      <td><input type="button" value="Calcular" onclick="calcularPago(1)"></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><input type="text" id="nombre2"></td>
+      <td><input type="text" id="pagoBase2"></td>
+      <td><input type="text" id="venta2_1"></td>
+      <td><input type="text" id="venta2_2"></td>
+      <td><input type="text" id="venta2_3"></td>
+      <td><span id="comision2" class="result"></span></td>
+      <td><span id="pagoTotal2" class="result"></span></td>
+      <td><input type="button" value="Calcular" onclick="calcularPago(2)"></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><input type="text" id="nombre3"></td>
+      <td><input type="text" id="pagoBase3"></td>
+      <td><input type="text" id="venta3_1"></td>
+      <td><input type="text" id="venta3_2"></td>
+      <td><input type="text" id="venta3_3"></td>
+      <td><span id="comision3" class="result"></span></td>
+      <td><span id="pagoTotal3" class="result"></span></td>
+      <td><input type="button" value="Calcular" onclick="calcularPago(3)"></td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+  function calcularPago(numFila) {
+    var pagoBase = parseFloat(document.getElementById('pagoBase' + numFila).value);
+    var venta1 = parseFloat(document.getElementById('venta' + numFila + '_1').value);
+    var venta2 = parseFloat(document.getElementById('venta' + numFila + '_2').value);
+    var venta3 = parseFloat(document.getElementById('venta' + numFila + '_3').value);
+    
+    var totalVentas = venta1 + venta2 + venta3;
+    var comision = 0;
+
+    if (totalVentas >= 0 && totalVentas <= 1000) {
+      comision = 0;
+    } else if (totalVentas >= 1001 && totalVentas <= 3000) {
+      comision = 0.20;
+    } else if (totalVentas >= 3001 && totalVentas <= 5000) {
+      comision = 0.40;
+    } else if (totalVentas > 5000) {
+      comision = 0.50;
+    }
+
+    var pagoTotal = pagoBase + (totalVentas * comision);
+
+    document.getElementById('comision' + numFila).innerText = (comision * 100) + "%";
+    document.getElementById('pagoTotal' + numFila).innerText = "$" + pagoTotal.toFixed(2);
+  }
+</script>
+
+</body>
+</html>

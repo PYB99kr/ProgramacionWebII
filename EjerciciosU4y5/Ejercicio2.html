@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturación de Paciente en Hospital</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin: auto;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            display: block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .results {
+            max-width: 600px;
+            margin: auto;
+        }
+        .results p {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulario de Facturación de Paciente</h1>
+    <form id="billingForm">
+        <label for="patientName">Nombre del Paciente:</label>
+        <input type="text" id="patientName" name="patientName" required>
+
+        <label for="consultationCost">Costo de Consulta:</label>
+        <input type="number" id="consultationCost" name="consultationCost" required>
+
+        <label for="hospitalizationCost">Costo de Hospitalización por Día:</label>
+        <input type="number" id="hospitalizationCost" name="hospitalizationCost" required>
+
+        <label for="daysHospitalized">Número de Días en Hospital:</label>
+        <input type="number" id="daysHospitalized" name="daysHospitalized" required>
+
+        <label for="miscCosts">Costos Varios (análisis, cirugías, etc.):</label>
+        <input type="number" id="miscCosts" name="miscCosts" required>
+
+        <label for="medicationCost">Costo de Medicamentos:</label>
+        <input type="number" id="medicationCost" name="medicationCost" required>
+
+        <label for="deductions">Posibles Deducciones:</label>
+        <input type="number" id="deductions" name="deductions" required>
+
+        <button type="button" onclick="calculateBill()">Calcular Facturación</button>
+    </form>
+
+    <div class="results" id="results"></div>
+
+    <script>
+        function calculateBill() {
+            // Obtener valores del formulario
+            const patientName = document.getElementById('patientName').value;
+            const consultationCost = parseFloat(document.getElementById('consultationCost').value);
+            const hospitalizationCost = parseFloat(document.getElementById('hospitalizationCost').value);
+            const daysHospitalized = parseFloat(document.getElementById('daysHospitalized').value);
+            const miscCosts = parseFloat(document.getElementById('miscCosts').value);
+            const medicationCost = parseFloat(document.getElementById('medicationCost').value);
+            const deductions = parseFloat(document.getElementById('deductions').value);
+
+            // Calcular desglose de gastos
+            const totalHospitalizationCost = hospitalizationCost * daysHospitalized;
+            const totalCost = consultationCost + totalHospitalizationCost + miscCosts + medicationCost;
+            const totalCostAfterDeductions = totalCost - deductions;
+
+            // Mostrar resultados
+            document.getElementById('results').innerHTML = `
+                <p><strong>Nombre del Paciente:</strong> ${patientName}</p>
+                <p><strong>Desglose de Gastos:</strong></p>
+                <p>Costo de Consulta: $${consultationCost.toFixed(2)}</p>
+                <p>Costo de Hospitalización por Día: $${hospitalizationCost.toFixed(2)} x ${daysHospitalized} días = $${totalHospitalizationCost.toFixed(2)}</p>
+                <p>Costos Varios: $${miscCosts.toFixed(2)}</p>
+                <p>Costo de Medicamentos: $${medicationCost.toFixed(2)}</p>
+                <p><strong>Gastos Totales:</strong> $${totalCost.toFixed(2)}</p>
+                <p><strong>Gasto Total menos Deducciones:</strong> $${totalCostAfterDeductions.toFixed(2)}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
